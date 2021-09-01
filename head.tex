@@ -1,0 +1,200 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[a4paper,includeheadfoot,top=10mm,bottom=10mm,left=10mm,right=10mm]{geometry}
+\usepackage{cmap} % Поддержка поиска русских слов в PDF (pdflatex)
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{fancyhdr} % колонтитулы
+\usepackage{hyperref} % гиперссылки
+\usepackage{comment} % многострочное комментирование 
+%\usepackage{pdfsync} % синхронизация
+
+
+\frenchspacing % Пробелы после конца предложения
+\righthyphenmin=2 % минимальная длина фрагмента при переносе слова
+\usepackage{misccorr} % российская полиграфия
+\usepackage{indentfirst}% Красная строка в первом абзаце
+\usepackage{ccaption} % Заголовки таблиц и рисунков
+\captiondelim{. } % точки в подписи рисунка
+
+
+
+
+\usepackage{rotating} % Поворот текста
+\usepackage{graphicx} % Вставка изображений
+\graphicspath{ {./} } % относительно main.tex
+\usepackage{xcolor} % настройка цвета
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,array}
+\usepackage{latexsym}
+\usepackage{stmaryrd} % Для знака нормальной подгруппы
+\usepackage{arydshln} % штрихованные линии в массивах
+\usepackage{mathtools} % выравнивание в матрицах
+\usepackage{multirow} % слияние в столбце
+\usepackage{multicol} % нумерация в нескольких колонках
+
+
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue!50!black},
+    urlcolor={red!80!black}
+} % цвета для ссылок
+
+
+
+
+\newtheorem{uprz}{\color{violet!100!black} Упражнение}
+\newtheorem{predl}{\color{blue!50!black} Предложение}
+\newtheorem{komment}{\color{green!50!blue} Комментарий}
+\newtheorem{conj}{Гипотеза}
+\newtheorem{notation}{\color{yellow!30!red} Обозначение}
+
+
+\theoremstyle{definition}
+\newtheorem{kit}{Кит}
+\newtheorem*{rem}{\color{green!50!blue}Замечание}
+\newtheorem{zad}{\color{violet!100!black}Задача}
+\newtheorem*{defn}{\color{yellow!30!red} Определение}
+\newtheorem*{fact}{Факт}
+\newtheorem{thm}{\color{red!40!black}Теорема}
+\newtheorem*{thmm}{\color{red!40!black} Теорема}
+\newtheorem{lem}{\color{green!50!black}Лемма}
+\newtheorem{cor}{\color{green!45!black}Следствие}
+\newtheorem{utvr}{\color{blue!50!black}Утверждение}
+\newtheorem{quest}{\color{violet!100!black}Вопрос}
+
+% Для рисования красивых стрелочек 
+\newcommand\tikznode[3][]%
+   {\tikz[remember picture,baseline=(#2.base)]
+      \node[minimum size=0pt,outer sep=0pt,#1](#2){#3};%
+   }
+\tikzset{>=stealth}
+
+% Кажется это про выравнивания в матрицах с минусами
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\proofname}{Доказательство}
+\renewcommand{\mod}{\,\operatorname{mod}\,}
+\renewcommand{\Re}{\operatorname{Re}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\ovl}{\overline}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\K}{\operatorname{K_0}}
+\newcommand{\witt}{\operatorname{W}}
+\newcommand{\gw}{\operatorname{GW}}
+\newcommand{\coh}{\operatorname{H}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\cl}{\operatorname{Cl}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand\tgg{\mathop{\rm tg}\nolimits}
+\newcommand\ccup{\mathop{\cup}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\chr}{\operatorname{char}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\orb}{\operatorname{\mathcal O}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Inn}{\operatorname{Inn}}
+\newcommand{\Out}{\operatorname{Out}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\SO}{\operatorname{SO}}
+\renewcommand{\O}{\operatorname{O}}
+\renewcommand{\U}{\operatorname{U}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Disc}{\operatorname{Disc}}
+\newcommand{\cnt}{\operatorname{cont}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Iso}{\operatorname{Iso}}
+\newcommand{\Isom}{\operatorname{Isom}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\di}{\mathop{\,\scalebox{0.85}{\raisebox{-1.2pt}[0.5\height]{\vdots}}\,}}
+\newcommand{\ndi}{\mathop{\not\scalebox{0.85}{\raisebox{-1.2pt}[0.5\height]{\vdots}}\,}}
+\newcommand{\nequiv}{\not \equiv}
+\newcommand{\Nod}{\operatorname{\text{НОД}}}
+\newcommand{\Nok}{\operatorname{\text{НОК}}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Aff}{\operatorname{Aff}}
+\newcommand{\AGL}{\operatorname{AGL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Volume}{\operatorname{Volume}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\R}{\mathbb R}
+\renewcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb H}
+
+
+\def\llq{\textquotedblleft} % кавычки
+\def\rrq{\textquotedblright} % кавычки
+\def\exm{\noindent {\bf Примеры:}}
+\def\ffi{\varphi}
+\def\pa{\partial}
+\def\eps{\varepsilon}
+\def\lan{\left\langle }
+\def\ran{\right\rangle}
+
+\def\bar{\begin{array}}
+\def\ear{\end{array}}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\thrm{\begin{thm}}
+\def\ethrm{\end{thm}}
+\def\dfn{\begin{defn}}
+\def\edfn{\end{defn}}
+\def\lm{\begin{lem}}
+\def\elm{\end{lem}}
+\def\zd{\begin{zad}}
+\def\ezd{\end{zad}}
+\def\prdl{\begin{predl}}
+\def\eprdl{\end{predl}}
+\def\crl{\begin{cor}}
+\def\ecrl{\end{cor}}
+\def\rm{\begin{rem}}
+\def\erm{\end{rem}}
+\def\fct{\begin{fact}}
+\def\efct{\end{fact}}
+\def\enm{\begin{enumerate}}
+\def\eenm{\end{enumerate}}
+\def\pmat{\begin{pmatrix}}
+\def\epmat{\end{pmatrix}}
+\def\utv{\begin{utvr}}
+\def\eutv{\end{utvr}}
+\def\upr{\begin{uprz}}
+\def\eupr{\end{uprz}}
+\def\nrml{\trianglelefteqslant}
+\def\qstn{\begin{quest}}
+\def\eqstn{\end{quest}}
+
+\renewcommand{\qedsymbol}{\ensuremath{\color{yellow!50!orange!20!black}\blacksquare}}
